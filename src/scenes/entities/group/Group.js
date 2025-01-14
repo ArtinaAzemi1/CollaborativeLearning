@@ -88,7 +88,7 @@ const Group =() => {
 
 
     const [groupId, setGroupId] = useState(0);
-    const [name, setName] = useState('')
+    const [groupName, setGroupName] = useState('')
     const [surname, setSurname] = useState('')
     const [email, setEmail] = useState('')
     const [groupsD, setGroupsD]= useState([]);
@@ -149,7 +149,7 @@ const Group =() => {
                                     <tr key={item.studentId}>
                                         <td>{index + 1}</td>
                                         <td>{item.studentId}</td>
-                                        <td>{item.name}</td>
+                                        <td>{item.groupName}</td>
                                         <td>{item.year}</td>
                                         <td>{item.capacity}</td>
                                         <td>

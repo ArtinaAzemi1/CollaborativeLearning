@@ -92,7 +92,12 @@ const Student =() => {
     const [surname, setSurname] = useState('')
     const [email, setEmail] = useState('')
     const [studentsD, setStudentsD]= useState([]);
+    const [student, setStudent] = useState([]);
     const [refreshD, setRefreshD] = useState("");
+    const [groups, setGroupsD] = useState([]);
+    const [groupId, setGroupId] = useState(0);
+    const [groupName, setGroupName] = useState("");
+
 
     useEffect(() => {
       const getStudentsD = async () => {
@@ -109,6 +114,57 @@ const Student =() => {
     
       getStudentsD();
     }, [refreshD]);
+
+    useEffect(() => {
+      const getGroupsD = async () => {
+          try {
+              const groupsD = await axios.get(
+                  "https://localhost:7110/api/Group"
+              );
+              setGroupsD(groupsD.data);
+          }
+          catch (err) {
+              console.log(err);
+          }
+      };
+    
+      getGroupsD();
+    }, [refreshD]);
+
+    const [show, setShow] = useState(false);
+    const [search, setSearch] = useState ('');
+    const [shto, setShto] = useState(false);
+    const [edito, setEdito] = useState(false);
+    const [fshij, setFshij] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShto(true);
+
+    const handleNameChange = (value) => {
+      setName(value);
+    };
+    const handleSurnameChange = (value) => {
+      setSurname(value);
+    };
+    const handleEmailChange = (value) => {
+      setEmail(value);
+    };
+    const handleGroupChange = (value) => {
+      setGroupId(value);
+    };
+  
+    const handleName = (value) => {
+      setStudent((prev) => ({ ...prev, name: value }));
+    };
+  
+    const handleSurname = (value) => {
+      setStudent((prev) => ({ ...prev, surname: value }));
+    };
+    const handleEmail = (value) => {
+      setStudent((prev) => ({ ...prev, email: value }));
+    };
+    const handleGroup = (value) => {
+      setStudent((prev) => ({ ...prev, groupId: value }));
+    };
 
     const tableStyle = {
       overflowX: 'auto',
@@ -136,6 +192,7 @@ const Student =() => {
                         <th>Name</th>
                         <th>Surname</th>
                         <th>Email</th>
+                        <th>Group</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -148,6 +205,7 @@ const Student =() => {
                                         <td>{item.name}</td>
                                         <td>{item.surname}</td>
                                         <td>{item.email}</td>
+                                        <td>{item.groupName}</td>
                                         <td>
                                             <button className="btn btn-primary" ></button> &nbsp;
                                             <button className="btn btn-danger" ></button>
