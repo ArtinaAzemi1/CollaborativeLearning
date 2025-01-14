@@ -110,15 +110,11 @@ const Student =() => {
       getStudentsD();
     }, [refreshD]);
 
-    /*const tableStyle = {
+    const tableStyle = {
       overflowX: 'auto',
       display: 'block'
     };
-
-    const minWidthStyle = {
-      minWidth: '2000px'
-    };*/
-  
+    
     return (
         <div className="content">
             <Row>
@@ -131,7 +127,7 @@ const Student =() => {
               <CardBody>
               <Button style={{marginBottom: "20px", marginTop: "20px"}}>Add Student</Button>
               <Container>
-                <div >
+                <div style={tableStyle}>
                 <Table responsive>
                   <thead className="text-primary">
                     <tr>
