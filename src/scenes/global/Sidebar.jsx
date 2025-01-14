@@ -141,6 +141,20 @@ const Sidebar = () => {
               setSelected={setSelected}
             />
             <Item
+              title="Students"
+              to="/entities/student"
+              icon={<PeopleOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="Groups"
+              to="/entities/group"
+              icon={<PeopleOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
               title="Contacts Information"
               to="/contacts"
               icon={<ContactsOutlinedIcon />}
